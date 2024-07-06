@@ -107,6 +107,7 @@ static int SDL_SoftBlit(SDL_Surface *src, SDL_Rect *srcrect,
 	/* Blit is done! */
 	return(okay ? 0 : -1);
 }
+#if 0
 static __inline__ void * memcpy_ (void *dest, const void *src, size_t len)
 {
   if(!len)
@@ -136,6 +137,7 @@ static __inline__ void * memcpy_ (void *dest, const void *src, size_t len)
 
   return dest;
 }
+#endif
 #ifdef MMX_ASMBLIT
 static __inline__ void SDL_memcpyMMX(Uint8 *to, const Uint8 *from, int len)
 {

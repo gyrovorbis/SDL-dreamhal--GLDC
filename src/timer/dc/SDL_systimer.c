@@ -52,13 +52,9 @@ void SDL_StartTicks(void)
 
 Uint32 SDL_GetTicks(void)
 {
-    uint32 s, ms;
 	uint64 msec;
 
-	timer_ms_gettime(&s, &ms);
-	msec = (((uint64)s) * ((uint64)1000)) + ((uint64)ms);
-
-	return (Uint32)msec;
+	return timer_ms_gettime64();
 }
 
 void SDL_Delay(Uint32 ms)
@@ -104,7 +100,7 @@ void SDL_SYS_TimerQuit(void)
 		while(!___sdl_dc_timer_no_alive)
 			if (timer_ms_gettime64()-w > 1000)
 			{
-				SDL_SYS_KillThread(timer);
+				SDL_KillThread(timer);
 				break;
 			}
 //		SDL_WaitThread(timer, NULL);
